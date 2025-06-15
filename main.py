@@ -3,7 +3,6 @@ import re
 import time
 from telegram import Update, ChatPermissions
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-from keep_alive import keep_alive
 
 TOKEN = os.getenv("BOT_TOKEN")
 
@@ -22,7 +21,7 @@ ABUSE_WORDS = [
     "b@tch", "bit*h", "bastard", "slut", "whore", "prostitute", "dogla", "wtf", "ki mar", "ki maar",
     "dogli", "motherfucker", "mother fucker", "mf", "fuck", "fuk", "f*ck", "gay", "gf", "fym", "lesbian", "transgender", "condomn", "danda", "choduga", "laudi", "pelunga", "pel dunga", "pelenge", "bhosdiwalee", "randii", "fad", "madhrchod", "andi bandi sandi", "andi mandi sandi", "chudwa", "baal", "maal", "fate", "randi rona", "condom", "kala", "khandan",
     "ass", "asshole", "dick", "d!ck", "d!@k", "d@ck", "tatti", "gobar", "gaali", "gali", "marva",
-    "gaandu", "chod diya", "chut", "bhosdike", "gad", "maarni", "lavde", "chusu", "mara",
+    "gaandu", "chod diya", "chut", "bhosdike", "gad", "maarni", "lavde", "chusu", "mara", "land",
     "चूतिया", "भोसड़ी", "मादरचोद", "भोसड़ीवाले", "चूत", "लौड़ा", "रंडी", "चुदाई", "झांट", "गांड", "बहनचोद", "माँ की", "चोद",
     "भोसडी", "मादर", "चुद", "चूतड़", "तेरी माँ", "तेरी बहन", "तू चोद", "मां-बहन", "लंड", "भोसड़ा", "भोसरी", "गांडू", "हरामी", "हरामखोर", "नपुंसक", "कांडोम",
     "तेरी माँ", "मादरजात", "चूतड़", "गांड मे", "माँ चोद्द दी"
@@ -106,7 +105,6 @@ async def delete_service_messages(update: Update, context: ContextTypes.DEFAULT_
 
 # Launch bot
 if __name__ == "__main__":
-    keep_alive()
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_message))
